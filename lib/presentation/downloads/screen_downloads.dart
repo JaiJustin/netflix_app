@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:netflix_app/core/colors/colors.dart';
@@ -24,7 +23,7 @@ class ScreenDownloads extends StatelessWidget {
               title: 'Download',
             )),
         body: ListView.separated(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             itemBuilder: (ctx, index) => _widgetList[index],
             separatorBuilder: (ctx, index) => const SizedBox(
                   height: 20,
@@ -52,7 +51,7 @@ class Section2 extends StatelessWidget {
           style: TextStyle(
               color: kWhitColor, fontSize: 25, fontWeight: FontWeight.bold),
         ),
-        kHeigh,
+        kHeight10,
         const Text(
           'We Will download a personalized selection of \n movies and shows for you , so there\'s\n always something to watch you \ndevice.',
           textAlign: TextAlign.center,
@@ -130,7 +129,7 @@ class Section3 extends StatelessWidget {
             ),
           ),
         ),
-        kHeigh,
+        kHeight10,
         SizedBox(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
