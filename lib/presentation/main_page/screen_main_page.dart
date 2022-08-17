@@ -11,10 +11,10 @@ class ScreenManPage extends StatelessWidget {
   ScreenManPage({Key? key}) : super(key: key);
 
   final pages = [
-    ScreenHome(),
-    ScreenHomeNewAndHot(),
-    ScreenFastLaugh(),
-    ScreenSearch(),
+    const ScreenHome(),
+    const ScreenHomeNewAndHot(),
+    const ScreenFastLaugh(),
+    const ScreenSearch(),
     ScreenDownloads()
   ];
   @override

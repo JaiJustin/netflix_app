@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_app/core/constants.dart';
-import 'package:netflix_app/presentation/search/widgets/search_idle_page_widget.dart';
 import 'package:netflix_app/presentation/search/widgets/search_text_title_widget.dart';
 
 class SearchResultPageWidget extends StatelessWidget {
