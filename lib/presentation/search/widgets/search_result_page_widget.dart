@@ -19,7 +19,7 @@ class SearchResultPageWidget extends StatelessWidget {
             mainAxisSpacing: 10,
             crossAxisSpacing: 10,
             childAspectRatio: 2 / 3,
-            children: List.generate(20, (index) => const MainCardWidget()),
+            children: List.generate(20, (index) => const ImageCardWidget()),
           ),
         ),
       ],
@@ -27,8 +27,8 @@ class SearchResultPageWidget extends StatelessWidget {
   }
 }
 
-class MainCardWidget extends StatelessWidget {
-  const MainCardWidget({Key? key}) : super(key: key);
+class ImageCardWidget extends StatelessWidget {
+  const ImageCardWidget({Key? key}) : super(key: key);
   final imageUrl =
       'https://www.themoviedb.org/t/p/w220_and_h330_face/ox4goZd956BxqJH6iLwhWPL9ct4.jpg';
 

@@ -29,7 +29,7 @@ class ScreenSearch extends StatelessWidget {
               ),
               kHeight10,
               const Expanded(child: SearchIdlePageWidget()),
-              //  const Expanded(child: SearchResultPageWidget()),
+              const Expanded(child: SearchResultPageWidget()),
             ],
           ),
         ),

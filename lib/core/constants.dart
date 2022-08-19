@@ -10,3 +10,13 @@ const kHeight10 = SizedBox(
 const kHeight20 = SizedBox(
   height: 20,
 );
+
+//BorderRadius
+final kRadius10 = BorderRadius.circular(10);
+
+//TextStyle
+
+const kHomeAppBarTextStyle = TextStyle(
+  fontSize: 14,
+  fontWeight: FontWeight.bold,
+);
