@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/colors/colors.dart';
+import '../../core/colors/colors.dart';
 
 class CustomButtonWidget extends StatelessWidget {
   const CustomButtonWidget({
     Key? key,
     required this.icon,
     required this.text,
+    this.iconSize = 25,
+    this.textSize = 20,
   }) : super(key: key);
   final IconData icon;
   final String text;
+  final double iconSize;
+  final double textSize;
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +21,14 @@ class CustomButtonWidget extends StatelessWidget {
       children: [
         Icon(
           icon,
-          size: 25,
+          size: iconSize,
           color: kWhitColor,
         ),
         Text(
           text,
-          style: const TextStyle(
-            fontSize: 20,
-            color: kWhitColor,
+          style: TextStyle(
+            fontSize: textSize,
+            color: kGreyColor,
           ),
         )
       ],
