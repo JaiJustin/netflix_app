@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:netflix_app/application/downloads/downloads_bloc.dart';
 import 'package:netflix_app/domain/core/api_end_points.dart';
 import 'package:netflix_app/domain/core/failures/main_failure.dart';
 import 'package:dartz/dartz.dart';

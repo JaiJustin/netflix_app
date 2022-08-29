@@ -14,7 +14,7 @@ class ScreenManPage extends StatelessWidget {
     const ScreenHome(),
     const ScreenHomeNewAndHot(),
     const ScreenFastLaugh(),
-    const ScreenSearch(),
+    ScreenSearch(),
     ScreenDownloads()
   ];
   @override
