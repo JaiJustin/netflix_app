@@ -6,64 +6,88 @@ import '../../../core/colors/colors.dart';
 import '../../../core/constants.dart';
 
 class ComingSoonCard extends StatelessWidget {
-  const ComingSoonCard({
-    Key? key,
-    required this.index,
-    required this.imageUrl,
-  }) : super(key: key);
-  final int index;
-  final String imageUrl;
+  final String id;
+  final String month;
+  final String day;
+  final String posterPath;
+  final String movieName;
+  final String description;
+
+  const ComingSoonCard(
+      {super.key,
+      required this.id,
+      required this.month,
+      required this.day,
+      required this.posterPath,
+      required this.movieName,
+      required this.description});
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Row(
       children: [
-        ComingSoonDate(size: size, index: index),
+        ComingSoonDate(
+          size: size,
+          day: day,
+          month: month,
+        ),
         SizedBox(
           width: size.width - 50,
-          height: size.height * 0.58,
+          height: size.height * 0.66,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               kHeight10,
-              VideoWidget(height: size.width * 0.5, imageUrl: imageUrl),
+              VideoWidget(height: size.width * 0.5, imageUrl: posterPath),
               kHeight10,
               Row(
                 children: [
-                  const Text(
-                    'Tall Girl 2',
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  Expanded(
+                    flex: 2,
+                    child: Text(
+                      movieName,
+                      style: TextStyle(
+                          fontSize: size.width * 0.06,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                   const Spacer(),
-                  Row(
-                    children: const [
-                      CustomButtonWidget(
-                        icon: Icons.notifications_outlined,
-                        text: 'Remind me',
-                        iconSize: 20,
-                        textSize: 14,
-                      ),
-                      kWidth,
-                      CustomButtonWidget(
-                        icon: Icons.info_outline,
-                        text: 'info',
-                        iconSize: 20,
-                        textSize: 14,
-                      ),
-                      kWidth
-                    ],
+                  Expanded(
+                    child: Row(
+                      children: const [
+                        Expanded(
+                          child: CustomButtonWidget(
+                            icon: Icons.notifications_outlined,
+                            text: 'Remind',
+                            iconSize: 18,
+                            textSize: 12,
+                          ),
+                        ),
+                        kWidth,
+                        Expanded(
+                          child: CustomButtonWidget(
+                            icon: Icons.info_outline,
+                            text: 'info',
+                            iconSize: 20,
+                            textSize: 14,
+                          ),
+                        ),
+                        kWidth
+                      ],
+                    ),
                   ),
                 ],
               ),
               const Text('Coming on Friday'),
               kHeight10,
-              const Text(
-                'Tall Girl 2',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              Text(
+                movieName,
+                style:
+                    const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
               ),
               kHeight10,
               Text(
-                'Leading the lead in the school music is a dream come true for Jodi, until the pressure sends her confidence - and her relationship - into a tailspin.',
+                description,
                 style: TextStyle(color: kGreyColor),
               ),
             ],
@@ -78,11 +102,13 @@ class ComingSoonDate extends StatelessWidget {
   const ComingSoonDate({
     Key? key,
     required this.size,
-    required this.index,
+    required this.day,
+    required this.month,
   }) : super(key: key);
 
   final Size size;
-  final int index;
+  final String day;
+  final String month;
 
   @override
   Widget build(BuildContext context) {
@@ -94,14 +120,14 @@ class ComingSoonDate extends StatelessWidget {
         children: [
           kHeight10,
           Text(
-            'FEB',
+            month,
             style: TextStyle(
               fontSize: 16,
               color: kGreyColor,
             ),
           ),
           Text(
-            '${index + 11}',
+            day,
             style: const TextStyle(
               fontSize: 30,
               letterSpacing: 2,

@@ -6,4 +6,9 @@ class ApiEndPoints {
 
   static const search =
       '$kBaseUrl/search/movie?api_key=$apiKey&query=total%20recall';
+
+  static const comingSoonMove =
+      '$kBaseUrl/movie/upcoming?api_key=$apiKey&language=en';
+  static const everyOneIsWatching =
+      '$kBaseUrl/trending/movie/day?api_key=$apiKey';
 }

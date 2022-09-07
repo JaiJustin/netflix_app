@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:netflix_app/application/bloc/fast_laugh_bloc.dart';
+
 import 'package:netflix_app/core/colors/colors.dart';
 import 'package:netflix_app/core/strings.dart';
 import 'package:netflix_app/domain/downloads/models/downloads.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:video_player/video_player.dart';
+
+import '../../../application/fast_laugh/fast_laugh_bloc.dart';
 
 class VideoListItemInheritedWidget extends InheritedWidget {
   final Widget widget;

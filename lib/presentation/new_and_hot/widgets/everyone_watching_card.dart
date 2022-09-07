@@ -8,35 +8,41 @@ import '../../widgets/custom_button_widget.dart';
 class EveryoneWatchingCard extends StatelessWidget {
   const EveryoneWatchingCard({
     Key? key,
-    required this.imageUrl,
-    required this.size,
+    required this.posterPath,
+    required this.movieName,
+    required this.description,
+    required this.id,
   }) : super(key: key);
 
-  final String imageUrl;
-  final Size size;
+  final String id;
+
+  final String posterPath;
+  final String movieName;
+  final String description;
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Friends',
+          VideoWidget(
+            imageUrl: posterPath,
+            height: size.width * 0.54,
+          ),
+          kHeight20,
+          Text(
+            movieName,
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           kHeight10,
           Text(
-            'This hit sitcom follows the merry  misadventure of six\n20-something plan as they naivete the pitfalls of work\nlife and love in 1990s manhattan.',
+            description,
             style: TextStyle(color: kGreyColor, fontSize: 15),
           ),
           kHeight50,
-          VideoWidget(
-            imageUrl: imageUrl,
-            height: size.width * 0.54,
-          ),
-          kHeight20,
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: const [

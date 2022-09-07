@@ -22,7 +22,6 @@ Downloads _$DownloadsFromJson(Map<String, dynamic> json) {
 mixin _$Downloads {
   @JsonKey(name: 'poster_path')
   String? get posterPath => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'title')
   String? get title => throw _privateConstructorUsedError;
 
@@ -36,7 +35,6 @@ mixin _$Downloads {
 abstract class $DownloadsCopyWith<$Res> {
   factory $DownloadsCopyWith(Downloads value, $Res Function(Downloads) then) =
       _$DownloadsCopyWithImpl<$Res>;
-
   $Res call(
       {@JsonKey(name: 'poster_path') String? posterPath,
       @JsonKey(name: 'title') String? title});
@@ -120,7 +118,6 @@ class _$_Downloads implements _Downloads {
   @override
   @JsonKey(name: 'poster_path')
   final String? posterPath;
-
   @override
   @JsonKey(name: 'title')
   final String? title;

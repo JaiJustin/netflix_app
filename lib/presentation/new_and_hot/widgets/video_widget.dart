@@ -22,7 +22,21 @@ class VideoWidget extends StatelessWidget {
         SizedBox(
           width: width,
           height: height,
-          child: Image.network(imageUrl),
+          child: Image.network(
+            imageUrl,
+            fit: BoxFit.cover,
+            loadingBuilder:
+                (BuildContext _, Widget child, ImageChunkEvent? progress) {
+              return child;
+            },
+            errorBuilder: (context, error, stackTrace) {
+              return const Icon(
+                Icons.wifi_off,
+                color: kWhitColor,
+                size: 20,
+              );
+            },
+          ),
         ),
         Positioned(
           right: 0,
