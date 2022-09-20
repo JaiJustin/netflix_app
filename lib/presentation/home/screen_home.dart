@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix_app/application/home/home_bloc.dart';
 
 import 'package:netflix_app/core/constants.dart';
 import 'package:netflix_app/presentation/home/widgets/background_card_widget.dart';
@@ -22,26 +24,36 @@ class ScreenHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      BlocProvider.of<HomeBloc>(context).add(const GetHomeScreenData());
+    });
     ValueNotifier<bool> scrollNotifier = ValueNotifier(true);
+
     final widgetsList = [
-      BackgroundCard(imageUrl: imageUrl2),
-      MainTitleCard(
-        title: 'Released in th past year',
-        imageUrl: imageUrl,
-      ),
-      MainTitleCard(
-        title: 'Trending Now',
-        imageUrl: imageUrl,
-      ),
-      MainTitleCard(
-        title: 'Tense Dramas',
-        imageUrl: imageUrl,
-      ),
-      MainTitleCard(
-        title: 'South Indican cinema',
-        imageUrl: imageUrl,
-      ),
-      NumberTitleCardWidget(imageUrl: imageUrl),
+      BlocBuilder<HomeBloc, HomeState>(
+        builder: (context, state) {
+          return Column(children: [
+            BackgroundCard(imageUrl: imageUrl2),
+            MainTitleCard(
+              title: 'Released in th past year',
+              imageList: state.pastYearMovieList,
+            ),
+            MainTitleCard(
+              title: 'Trending Now',
+              imageList: state.trendingMovieList,
+            ),
+            MainTitleCard(
+              title: 'Tense Dramas',
+              imageList: state.teensDramasMovieList,
+            ),
+            MainTitleCard(
+              title: 'South Indican cinema',
+              imageList: state.southIndianMovieList,
+            ),
+            NumberTitleCardWidget(movePostList: state.trendingMovieAndTvList),
+          ]);
+        },
+      )
     ];
 
     return Scaffold(
@@ -63,10 +75,22 @@ class ScreenHome extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: ListView.separated(
-                    itemBuilder: (ctx, index) => widgetsList[index],
-                    separatorBuilder: (ctx, index) => kHeight10,
-                    itemCount: widgetsList.length),
+                child: BlocBuilder<HomeBloc, HomeState>(
+                  builder: (context, state) {
+                    if (state.isLoading) {
+                      return const Center(
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      );
+                    } else if (state.hasError) {
+                      return const Text('Error whale getting data');
+                    }
+
+                    return ListView.separated(
+                        itemBuilder: (ctx, index) => widgetsList[index],
+                        separatorBuilder: (ctx, index) => kHeight10,
+                        itemCount: widgetsList.length);
+                  },
+                ),
               ),
               Visibility(
                 visible: scrollNotifier.value,

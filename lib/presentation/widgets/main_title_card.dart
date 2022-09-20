@@ -1,4 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:netflix_app/core/strings.dart';
+import 'package:netflix_app/domain/hot_and_new/model/hot_and_new.dart';
 
 import '../../core/constants.dart';
 import 'main_card_widget.dart';
@@ -7,11 +11,11 @@ import 'main_title_widget.dart';
 class MainTitleCard extends StatelessWidget {
   const MainTitleCard({
     Key? key,
-    required this.imageUrl,
+    required this.imageList,
     required this.title,
   }) : super(key: key);
 
-  final String imageUrl;
+  final List<HotAndNewData> imageList;
   final String title;
 
   @override
@@ -28,10 +32,11 @@ class MainTitleCard extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemBuilder: (ctx, index) => MainCardWidget(
                     size: size,
-                    imageUrl: imageUrl,
+                    imageUrl:
+                        '$imageAppendUrl${imageList[Random().nextInt(imageList.length)].posterPath}',
                   ),
               separatorBuilder: (ctx, index) => kWidth,
-              itemCount: 20),
+              itemCount: imageList.length),
         ),
       ],
     );

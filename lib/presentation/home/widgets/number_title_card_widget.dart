@@ -1,5 +1,7 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
+import 'package:netflix_app/core/strings.dart';
+import 'package:netflix_app/domain/hot_and_new/model/hot_and_new.dart';
 import 'package:netflix_app/presentation/widgets/main_title_widget.dart';
 
 import '../../../core/constants.dart';
@@ -8,10 +10,10 @@ import '../../widgets/main_card_widget.dart';
 class NumberTitleCardWidget extends StatelessWidget {
   const NumberTitleCardWidget({
     Key? key,
-    required this.imageUrl,
+    required this.movePostList,
   }) : super(key: key);
 
-  final String imageUrl;
+  final List<HotAndNewData> movePostList;
 
   @override
   Widget build(BuildContext context) {
@@ -34,12 +36,13 @@ class NumberTitleCardWidget extends StatelessWidget {
                           ),
                           MainCardWidget(
                             size: size,
-                            imageUrl: imageUrl,
+                            imageUrl:
+                                '$imageAppendUrl${movePostList[index].posterPath}',
                           ),
                         ],
                       ),
                       Positioned(
-                        left: 10,
+                        left: 0,
                         bottom: -27,
                         child: BorderedText(
                           strokeColor: Colors.white,
@@ -56,7 +59,7 @@ class NumberTitleCardWidget extends StatelessWidget {
                     ],
                   ),
               separatorBuilder: (ctx, index) => kWidth,
-              itemCount: 10),
+              itemCount: movePostList.length),
         ),
       ],
     );
